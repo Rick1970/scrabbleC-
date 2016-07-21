@@ -23,61 +23,54 @@ namespace ScrabbleScore.Objects
     public int ScrabbleScore()
     {
       string userInput = this.GetInput();
-
-      // TESTING HERE
-      foreach (char letter in userInput)
+      string userInputUpper = userInput.ToUpper();
+      int runningScore = 0;
+      
+      foreach (char letter in userInputUpper)
       {
-        if( userInput == "A")
+        if( letter == 'A' ||
+            letter == 'E' ||
+            letter == 'I' ||
+            letter == 'O' ||
+            letter == 'U' ||
+            letter == 'L' ||
+            letter == 'N' ||
+            letter == 'R' ||
+            letter == 'S' ||
+            letter == 'T')
         {
-          return 1;
+          runningScore += 1;
+        }
+        else if (letter == 'D' || letter == 'G')
+        {
+          runningScore += 2;
+        }
+        else if (letter == 'B' || letter == 'C' || letter == 'M' || letter == 'P')
+        {
+          runningScore += 3;
+        }
+        else if (letter == 'F' || letter == 'H' || letter == 'V' || letter == 'W' || letter == 'Y')
+        {
+          runningScore += 4;
+        }
+        else if (letter == 'K')
+        {
+          runningScore += 5;
+        }
+        else if (letter == 'J' || letter == 'X')
+        {
+          runningScore += 8;
+        }
+        else if (letter == 'Q' || letter == 'Z')
+        {
+          runningScore += 10;
+        }
+        else
+        {
+          return 0;
         }
       }
-      // TESTING ENDS HERE
-      if( userInput == "A" ||
-          userInput == "E" ||
-          userInput == "I" ||
-          userInput == "O" ||
-          userInput == "U" ||
-          userInput == "L" ||
-          userInput == "N" ||
-          userInput == "R" ||
-          userInput == "S" ||
-          userInput == "T")
-      {
-        return 1;
-      }
-      else if (userInput == "D" || userInput == "G")
-      {
-        return 2;
-      }
-      else if (userInput == "B" || userInput == "C" || userInput == "M" || userInput == "P")
-      {
-        return 3;
-      }
-      else if (userInput == "F" || userInput == "H" || userInput == "V" || userInput == "W" || userInput == "Y")
-      {
-        return 4;
-      }
-      else if (userInput == "K")
-      {
-        return 5;
-      }
-      else if (userInput == "J" || userInput == "X")
-      {
-        return 8;
-      }
-      else if (userInput == "Q" || userInput == "Z")
-      {
-        return 10;
-      }
-      else if (userInput == "AA")
-      {
-        return 2;
-      }
-      else
-      {
-        return 0;
-      }
+      return runningScore;
     }
   }
 }
