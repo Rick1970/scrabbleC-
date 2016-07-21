@@ -1,1 +1,21 @@
 <h1>OUTPUT PAGE</h1>
+
+
+@if (@Model.ScrabbleScore() == 0)
+{
+  if (@Model.GetInput().Length == 0)
+  {
+    <h3>You didn't enter anything! Please try again.</h3>
+  }
+  else if (@Model.GetInput().Length > 0)
+  {
+    <h3>Your word can only contain letters! Please try again.</h3>
+  }
+}
+else
+{
+  <p>Your word was: @Model.GetInput()</p>
+  <p>Your Score is: @Model.ScrabbleScore()</p>
+}
+
+<a href="/">Back to Start</a>

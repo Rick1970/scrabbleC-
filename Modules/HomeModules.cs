@@ -16,6 +16,9 @@ namespace ScrabbleScore
         Scrabble newScrabble = new Scrabble(Request.Form["user-word"]);
         return View["results.cshtml", newScrabble];
       };
+      Get["/results"] = _ => {
+        return View["index.cshtml"];
+      };
     }
   }
 }
